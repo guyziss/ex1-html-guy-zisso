@@ -1,0 +1,31 @@
+name: Check for Email in README
+
+on:
+  push:
+    branches:
+      - main # Or whatever your default branch is named
+
+jobs:
+  check-email:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check README.md for college email address
+        id: grep-email
+        run: |
+          if grep -q -E "[a-zA-Z0-9._%+-]+@edu.jmc.ac.il" README.md; then
+            echo "::notice file=README.md::A college email address was detected in the README.md file."
+            echo "result=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice file=README.md::No college email address was found in the README.md file."
+            echo "result=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Fail workflow if email missing
+        if: steps.grep-email.outputs.result == 'false'
+        run: |
+          echo "No college email address was found in the README.md. Please add your college email (e.g., name@edu.jmc.ac.il)."
+          exit 1
