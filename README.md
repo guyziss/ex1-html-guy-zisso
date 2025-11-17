@@ -4,8 +4,8 @@ A started template for HTML project. Learn about the format of this readme here:
 [https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax]
 
 
-## Your Name(s) Here
-Email (as appearing in moodle): 
+## Guy Ziss
+Email (as appearing in moodle): guyzi@edu.jmc.ac.il
 
 ## Additional instructions
 
